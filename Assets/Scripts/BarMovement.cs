@@ -7,9 +7,6 @@ public class BarMovement : MonoBehaviour {
 	public KeyCode downKey;
 	public KeyCode leftKey;
 	public KeyCode rightKey;
-	public KeyCode startKey;
-	public KeyCode restartKey;
-	public Sprite censorBar;
 	private Rigidbody2D rb;
 	public float rateOfSpeed;
 
