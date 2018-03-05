@@ -8,7 +8,8 @@ public class BarMovement : MonoBehaviour {
 	public KeyCode leftKey;
 	public KeyCode rightKey;
 	private Rigidbody2D rb;
-	public float rateOfSpeed;
+	public float rateOfHorizontalSpeed;
+	public float rateOfVerticalSpeed;
 
 
 
@@ -44,24 +45,24 @@ public class BarMovement : MonoBehaviour {
 		}//END FIXED UPDATE
 
 	void moveUp() {
-		rb.velocity = new Vector2 (rb.velocity.x, rateOfSpeed);
+		rb.velocity = new Vector2 (rb.velocity.x, rateOfVerticalSpeed);
 
 		}//END MOVE UP
 
 	void moveDown(){
-		rb.velocity = new Vector2 (rb.velocity.x, ((rateOfSpeed)*-1));
+		rb.velocity = new Vector2 (rb.velocity.x, ((rateOfVerticalSpeed)*-1));
 
 
 		}//END MOVE DOWN
 
 	void moveLeft (){
-		rb.velocity = new Vector2 (((rateOfSpeed)*-1), rb.velocity.y);
+		rb.velocity = new Vector2 (((rateOfHorizontalSpeed)*-1), rb.velocity.y);
 	
 
 		}//END MOVE LEFT
 
 	void moveRight(){
-		rb.velocity = new Vector2 (rateOfSpeed, rb.velocity.y);
+		rb.velocity = new Vector2 (rateOfHorizontalSpeed, rb.velocity.y);
 
 		}//END MOVE RIGHT
 
