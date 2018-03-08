@@ -2,68 +2,66 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BarMovement : MonoBehaviour {
-	public KeyCode upKey;
-	public KeyCode downKey;
-	public KeyCode leftKey;
-	public KeyCode rightKey;
-	private Rigidbody2D rb;
-	public float rateOfHorizontalSpeed;
-	public float rateOfVerticalSpeed;
+public class BarMovement : MonoBehaviour { 						// BarMovement Script
+																// to control the behaviour and movement of the censor bar on the start screen
+																// including movment and the overlap detection 
 
 
+	public KeyCode upKey;														// var for our up key , assigned in the inspector
+	public KeyCode downKey;														// var for our down key , assigned in the inspector
+	public KeyCode leftKey;														// var for our left key , assigned in the inspector
+	public KeyCode rightKey;													// var for our right key , assigned in the inspector
 
-	void Start () {
-		rb = GetComponent<Rigidbody2D>();
-			
-		
+	private Rigidbody2D rb;														// var for our rigigbody
+
+	public float rateOfHorizontalSpeed;											// var for the rate of horizontal speed
+	public float rateOfVerticalSpeed;											// var for the rate of vertical speed
+	public float horizontalForce;												// var for the rate of horizontal force
+	public float verticalForce;													// var for the rate of vertical force
+
+
+	void Start () {																// Start Function
+		rb = GetComponent<Rigidbody2D>();										// assign the var 'rb' to the rigidbody2D component of this game object
 	}//END START
-	
-
-	void FixedUpdate () {
-		
-		if (Input.anyKeyDown) {
-			if (Input.GetKeyDown (upKey))
-				moveUp ();
-			
-			
-			if (Input.GetKeyDown (downKey))
-				moveDown ();
-			
-
-			if (Input.GetKeyDown (leftKey))
-				moveLeft ();
-			
-			
-			if (Input.GetKeyDown (rightKey))
-				moveRight ();
-	
-		} 
-		else rb.velocity = new Vector2(0,0);
 
 
-		}//END FIXED UPDATE
+	void FixedUpdate () {														// FixedUpdate Function
 
-	void moveUp() {
-		rb.velocity = new Vector2 (rb.velocity.x, rateOfVerticalSpeed);
+		if (Input.GetKey (upKey))												// if the upKey is pressed
+			moveUp ();															// run the moveUp function
 
-		}//END MOVE UP
+		if (Input.GetKey(downKey))												// if the downKey is pressed
+			moveDown ();														// run the moveDown function
 
-	void moveDown(){
-		rb.velocity = new Vector2 (rb.velocity.x, ((rateOfVerticalSpeed)*-1));
+		if (Input.GetKey(leftKey))												// if the leftKey is pressed
+			moveLeft ();														// run the moveLeft function
+
+		if (Input.GetKey (rightKey))											// if the rightKey is pressed
+			moveRight ();														// run the moveRight function
+
+		 //else rb.velocity = new Vector2(0,0);  									// else, the velocity of the rigidbody is zero
+
+	}//END FIXED UPDATE
 
 
-		}//END MOVE DOWN
+	void moveUp() {																// moveUP Function
+		rb.AddForce (Vector2.up * verticalForce);								// add force to the rb (rigidbody) using Vector2.up (a built in unity vector2 value of 0,1), 
+																				// multiplied by our verticalForce variable
+	}//END MOVE UP
 
-	void moveLeft (){
-		rb.velocity = new Vector2 (((rateOfHorizontalSpeed)*-1), rb.velocity.y);
-	
+	void moveDown(){															// moveDown Function 
+		rb.AddForce (Vector2.down * verticalForce);								// add force to the rb (rigidbody) using Vector2.down (a built in unity vector2 value of 0,-1), 
+																				// multiplied by our verticalForce variable
+	}//END MOVE DOWN
 
-		}//END MOVE LEFT
+	void moveLeft (){															// moveLeft Function
+		rb.AddForce (Vector2.left * horizontalForce);							// add force to the rb (rigidbody) using Vector2.left (a built in unity vector2 value of -1,0), 
+																				// multiplied by our horizonalForce variable
+	}//END MOVE LEFT
 
-	void moveRight(){
-		rb.velocity = new Vector2 (rateOfHorizontalSpeed, rb.velocity.y);
-
-		}//END MOVE RIGHT
+	void moveRight(){															// moveRight Function
+		rb.AddForce (Vector2.right * horizontalForce);							// add force to the rb (rigidbody) using Vector2.right (a built in unity vector2 value of 1,0), 
+																				// multiplied by our horizonalForce variable
+	}//END MOVE RIGHT
 
 }//END BAR MOVEMENT SCRIPT
