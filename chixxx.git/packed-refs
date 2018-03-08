@@ -1,0 +1,6 @@
+# pack-refs with: peeled fully-peeled 
+6dcd19d7ddb075002588e754281980ce2e920178 refs/heads/KaiMondayNight
+35b9cbe31205c0189869186bcd824f7b5c40dcdd refs/heads/master
+751255bf520da15ea39f61f4d4920a9f42daa16f refs/pull/1/head
+c31d9bb34090734db5fcf36cace561590cdfb95b refs/pull/2/head
+1f7b3dcd3940bcd0664803a353dc7449f1be7c4a refs/pull/3/head
